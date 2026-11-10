@@ -1,0 +1,14 @@
+/.quarto/
+/_site/
+/_presenter/
+/_quarto_internal_scss_error.scss
+.DS_Store
+__pycache__/
+*.pyc
+
+**/*.quarto_ipynb
+
+.env
+.env.*
+!.env.example
+.cache/

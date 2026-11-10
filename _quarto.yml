@@ -1,0 +1,7 @@
+project:
+  type: default
+  render:
+    - index.qmd
+  output-dir: _site
+  resources:
+    - assets/social/title-slide-preview.png

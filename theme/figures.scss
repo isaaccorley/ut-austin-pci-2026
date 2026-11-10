@@ -1,0 +1,140 @@
+/*-- scss:rules --*/
+/* Figure-led layouts added in the October 28 revision: scale numbers, step strips, chart + map pairs. */
+.reveal .visual-slide p.fig-caption { font:23px/1.3 Arial,Helvetica,sans-serif !important;color:#000 !important;margin:12px 0 0 !important; }
+.reveal figure.panel { margin:0;min-width:0; }
+.reveal figure.panel img { display:block;width:100%;object-fit:contain;margin:0; }
+.reveal figure.panel figcaption { font-size:22px;line-height:1.25;margin-top:8px;color:#000; }
+.reveal figure.panel figcaption span { display:block;font-size:18px;color:#555;margin-top:3px; }
+
+/* Eight-panel field gallery. */
+.reveal .gallery-eight { grid-template-columns:repeat(4,1fr);gap:14px 20px;height:560px;margin-top:20px; }
+.reveal .gallery-eight img,.reveal .gallery-eight .motion-only { width:100%;height:199px; }
+.reveal .gallery-eight figcaption { font-size:21px !important;margin-top:6px; }
+
+/* Full-bleed clip with a title chip. */
+.reveal .film-slide { position:absolute;inset:0;background:#0b0f14; }
+.reveal .film-slide .motion-only { position:absolute;inset:0;width:1600px;height:900px; }
+.reveal .film-slide .motion-only video,.reveal .film-slide .motion-only img { object-fit:cover; }
+.reveal .film-label { position:absolute;left:48px;top:40px;z-index:2;background:rgba(244,244,235,.94);color:#000;padding:20px 28px;max-width:760px; }
+.reveal .film-label h2 { font-size:46px !important;margin:0 0 6px !important;line-height:1.1 !important; }
+.reveal .film-label p { font-size:21px;margin:0;color:#555; }
+.reveal .film-slide + .source-footnote { z-index:2;left:48px !important;right:auto !important;bottom:18px !important;white-space:nowrap;background:rgba(244,244,235,.92);padding:4px 10px; }
+
+/* Scale: map with a stacked column of numbers. */
+.reveal .scale-layout { display:grid;grid-template-columns:1fr 330px;gap:36px;align-items:center;height:640px; }
+.reveal .scale-layout > img { width:100%;height:auto;display:block; }
+.reveal .stat-stack { display:flex;flex-direction:column;gap:14px; }
+.reveal .stat { border-top:2px solid #000;padding-top:10px; }
+.reveal .stat b { display:block;font-weight:600;font-size:44px;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums; }
+.reveal .stat span { display:block;font-size:18px;line-height:1.3;color:#555;margin-top:5px; }
+.reveal .stat.accent { border-top-color:#ff4f2c; }
+.reveal .slides section.present .stat { animation:stat-rise .55s cubic-bezier(.2,.7,.2,1) both; }
+@for $i from 1 through 6 { .reveal .slides section.present .stat:nth-child(#{$i}) { animation-delay:#{.12 * $i}s; } }
+@keyframes stat-rise { from { opacity:0;transform:translateY(18px); } to { opacity:1;transform:none; } }
+@media (prefers-reduced-motion: reduce) { .reveal .slides section.present .stat { animation:none; } }
+
+/* Compute: run timeline beside the numbers. */
+.reveal .run-layout { display:grid;grid-template-columns:740px 1fr;gap:56px;align-items:center; }
+.reveal .run-layout .stat-stack { gap:10px; }
+.reveal .cost-row { display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:40px;margin-top:30px; }
+.reveal .cost-row .stat span { font-size:19px; }
+.reveal .run-layout > img { width:100%;height:auto; }
+
+/* Inputs: 2 x 2 quarters, model, outputs. */
+.reveal .inputs-layout { display:grid;grid-template-columns:600px 330px 286px;gap:36px;align-items:center;height:620px; }
+.reveal .quarter-grid { display:grid;grid-template-columns:1fr 1fr;gap:10px; }
+.reveal .quarter-grid figure,.reveal .output-stack figure { margin:0;position:relative; }
+.reveal .quarter-grid img { display:block;width:295px;height:295px; }
+.reveal .output-stack { display:flex;flex-direction:column;gap:14px; }
+.reveal .output-stack img { display:block;width:286px;height:286px;border:1px solid #ccc; }
+.reveal .quarter-grid figcaption,.reveal .output-stack figcaption { position:absolute;left:8px;top:8px;background:rgba(244,244,235,.92);font-size:19px;padding:2px 9px;color:#000; }
+.reveal .model-col h3 { font-size:34px !important;margin:0 0 14px !important; }
+.reveal .model-col p { font-size:24px;line-height:1.35;margin:0 0 18px; }
+.reveal .model-col .arrow { font-size:46px;color:#555;line-height:1;margin:0 0 14px; }
+
+/* Step strips (BoundaryVote, distribution). */
+.reveal .bv-layout { display:grid;grid-template-columns:1104px 1fr;gap:44px;align-items:center; }
+.reveal .bv-layout > div > p { font-size:25px;line-height:1.35;margin:0 0 20px;border-top:2px solid #bbb;padding-top:12px; }
+.reveal .step-grid { display:grid;grid-template-columns:repeat(4,264px);gap:12px 16px; }
+.reveal .step-grid img { width:264px;height:264px;border:1px solid #ccc; }
+.reveal .step-grid figcaption { font-size:21px;margin-top:5px; }
+.reveal .step-grid figcaption b { font-weight:600;color:#555;margin-right:6px; }
+.reveal .format-row { display:grid;grid-template-columns:repeat(4,1fr);gap:30px;align-items:start;align-content:center;height:696px; }  /* centred below the title */
+.reveal .format-row img { height:420px;border:1px solid #ccc;object-fit:cover; }
+.reveal .format-row figcaption { font-size:25px; }
+.reveal .format-row figcaption span { font-size:19px; }
+
+/* Limitations: ratio map + bars. */
+.reveal .limits-layout { display:grid;grid-template-columns:1fr 520px;gap:40px;align-items:start;height:650px; }
+.reveal .limits-layout img { width:100%;height:auto;display:block; }
+.reveal .limits-layout ul { margin:20px 0 0 26px;padding:0;font-size:25px;line-height:1.35; }
+.reveal .limits-layout li { margin:0 0 10px; }
+
+/* Two-project scope with pictures. */
+.reveal .scope-pair { display:grid;grid-template-columns:1fr 1fr;gap:56px;height:696px;align-content:center; }  /* centred below the title */
+.reveal .scope-pair img { width:100%;height:340px;object-fit:cover;display:block; }
+.reveal .scope-pair h3 { font-size:38px !important;margin:22px 0 10px !important; }
+.reveal .scope-pair p { font-size:26px;line-height:1.35;margin:0 0 8px; }
+
+/* Evaluation pages. */
+.reveal .wide-figure { width:100%;height:auto;display:block; }
+.reveal .three-notes { display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:26px; }
+.reveal .three-notes p { font-size:25px;line-height:1.35;margin:0;border-top:2px solid #bbb;padding-top:14px; }
+.reveal .two-notes { display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:22px; }
+.reveal .two-notes p { font-size:25px;line-height:1.35;margin:0;border-top:2px solid #bbb;padding-top:14px; }
+.reveal .cells-layout { display:grid;grid-template-columns:880px 1fr;gap:50px;align-items:center;height:620px; }
+.reveal .cells-layout img { width:100%;height:auto; }
+.reveal .cells-layout .stat b { font-size:46px; }
+.reveal .diag-layout { display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:16px; }
+.reveal .diag-layout img { width:100%;height:auto;display:block; }
+.reveal .diag-lower { display:grid;grid-template-columns:920px 1fr;gap:44px;align-items:center;margin-top:20px; }
+.reveal .diag-lower img { width:100%;height:auto; }
+.reveal .diag-lower h3 { font-size:30px !important;margin:0 0 10px !important; }
+.reveal .diag-lower p { font-size:23px;line-height:1.35;margin:0 0 16px; }
+
+/* Conclusions and resources. */
+.reveal .takeaways { display:grid;grid-template-columns:repeat(3,1fr);gap:44px;margin-top:40px; }
+.reveal .takeaways img { width:100%;height:360px;object-fit:cover;display:block;border:1px solid #ccc; }
+.reveal .takeaways p { font-size:32px;line-height:1.35;margin:22px 0 0; }
+.reveal .resources-layout { display:grid;grid-template-columns:1fr 600px;gap:60px;align-items:center;height:620px; }
+.reveal .resources-layout .resource-links { margin:0;grid-template-columns:1fr;gap:30px; }
+.reveal .qr-row { display:grid;grid-template-columns:repeat(3,1fr);gap:28px;text-align:center; }
+.reveal .qr-row img { width:100%;height:auto; }
+.reveal .qr-row p { font-size:19px;margin:10px 0 0;color:#555; }
+
+/* Model comparison: paper table with the two U-Net + EfficientNet rows marked. */
+.reveal .prue-layout { display:grid;grid-template-columns:1130px 1fr;gap:40px;align-items:center;height:660px; }
+.reveal .prue-table { position:relative; }
+.reveal .prue-table img { display:block;width:100%;height:auto; }
+.reveal .prue-table .row-mark { position:absolute;left:-8px;right:-8px;border:3px solid #ff4f2c; }
+.reveal .prue-layout > div > p,.reveal .tools-layout > div:last-child > p { font-size:24px;line-height:1.35;margin:0 0 20px;border-top:2px solid #bbb;padding-top:12px; }
+.reveal .tools-layout { display:grid;grid-template-columns:1000px 1fr;gap:44px;align-items:center;height:660px; }
+.reveal #contourrs .three-notes,.reveal #coarsen .three-notes { margin-top:18px; }
+.reveal #contourrs .three-notes p,.reveal #coarsen .three-notes p { font-size:23px; }
+
+/* Field data and its uses: France strip on top, three use cases below. */
+.reveal .uses-layout { display:flex;flex-direction:column;justify-content:center;gap:24px;height:696px; }
+.reveal .uses-layout figure { margin:0;min-width:0; }
+.reveal .uses-layout img { display:block;margin:0; }
+.reveal .uses-wide img { width:100%;height:auto; }
+.reveal .uses-wide figcaption { font-size:24px;margin-top:10px; }
+.reveal .uses-row { display:grid;grid-template-columns:repeat(3,1fr);gap:32px;align-items:start; }
+.reveal .uses-row img { width:100%;height:330px;object-fit:contain;object-position:left top; }
+.reveal .uses-row figcaption { font-size:23px;line-height:1.3;margin-top:10px; }
+.reveal .uses-row figcaption b { display:block;font-weight:600; }
+.reveal .uses-row figcaption span { display:block;font-size:19px;color:#555; }
+.reveal .uses-chart { mix-blend-mode:multiply; }
+
+/* Career path: the two lines sweep in left to right, in time order. */
+.reveal .career-layout { display:flex;align-items:center;height:696px; }
+.reveal .career-layout img { display:block;width:100%;height:auto;margin:0; }
+.reveal .slides section.present .career-path { animation:career-wipe 2.2s cubic-bezier(.35,.1,.25,1) .15s both; }
+@keyframes career-wipe { from { clip-path:inset(0 100% 0 0); } to { clip-path:inset(0 0 0 0); } }
+@media (prefers-reduced-motion: reduce) { .reveal .slides section.present .career-path { animation:none; } }
+
+/* Catalog screenshot beside the stat stack. */
+.reveal .catalog-layout > img { border:1px solid #ccc; }
+
+/* TG ivory background: multiply drops the white page of reused paper and repository figures into the slide. */
+.reveal .label-figure,.reveal .prediction-figure,.reveal .coarsen-figure,.reveal .visual-wide,
+.reveal .teaching-diagram,.reveal .diag-lower img,.reveal .prue-table img { mix-blend-mode:multiply; }

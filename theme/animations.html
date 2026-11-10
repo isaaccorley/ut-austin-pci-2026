@@ -1,0 +1,43 @@
+<script>
+(() => {
+ const setup = () => {
+  if (!window.Reveal || !Reveal.isReady()) { setTimeout(setup, 50); return; }
+  const isStatic = new URLSearchParams(location.search).has('static');
+  const videos = [...document.querySelectorAll('video')];
+  const playback = () => {
+   videos.forEach(v => v.pause());
+   if (document.hidden || isStatic) return;
+   Reveal.getCurrentSlide()?.querySelectorAll('video').forEach(v => { v.muted = true; v.play().catch(() => { v.controls = true; }); });
+  };
+  videos.forEach(v => v.addEventListener('error', () => { v.style.visibility = 'hidden'; v.closest('.motion-only')?.classList.add('media-error'); }));
+  // Live demo iframes: load on arrival (plus one slide of lookahead); poster stays until the app has loaded.
+  const loadDemos = slide => slide?.querySelectorAll('.demo-embed').forEach(d => {
+   const f = d.querySelector('iframe');
+   if (!f || f.src) return;
+   // Grace period after load so the poster covers the app's own startup (map tiles, WASM) before the iframe shows.
+   f.addEventListener('load', () => { if (navigator.onLine) setTimeout(() => d.classList.add('ready'), 3000); }, { once: true });
+   f.src = d.dataset.src;
+  });
+  const demos = () => {
+   if (isStatic || !navigator.onLine) return;
+   const { h } = Reveal.getIndices();
+   loadDemos(Reveal.getCurrentSlide());
+   loadDemos(Reveal.getSlide(h + 1));
+  };
+  // Scale numbers count up on arrival; the final value is already in the markup for print, ?static=1 and reduced motion.
+  const calm = isStatic || matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const countUp = slide => slide?.querySelectorAll('[data-count]').forEach(el => {
+   if (calm) return;
+   const end = Number(el.dataset.count), d = Number(el.dataset.decimals || 0), suffix = el.dataset.suffix || '';
+   const fmt = v => v.toLocaleString('en-US', { minimumFractionDigits: d, maximumFractionDigits: d }) + suffix;
+   const t0 = performance.now(), ms = 1100;
+   const step = now => { const k = Math.min(1, (now - t0) / ms); el.textContent = fmt(end * (1 - (1 - k) ** 3)); if (k < 1) requestAnimationFrame(step); };
+   requestAnimationFrame(step);
+  });
+  Reveal.on('slidechanged', () => { playback(); demos(); countUp(Reveal.getCurrentSlide()); });
+  document.addEventListener('visibilitychange', playback);
+  playback(); demos(); countUp(Reveal.getCurrentSlide());
+ };
+ setup();
+})();
+</script>
