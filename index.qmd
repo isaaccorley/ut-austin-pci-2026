@@ -3,7 +3,7 @@ pagetitle: "Fields of the World and MIND · UT Austin Causal ML & EO"
 author: "Isaac Corley, Taylor Geospatial"
 format:
   revealjs:
-    theme: [default, theme/custom.scss, theme/lecture.scss, theme/classroom.scss, theme/plain.scss, theme/visual.scss, theme/research.scss, theme/figures.scss]
+    theme: [default, theme/custom.scss, theme/lecture.scss, theme/classroom.scss, theme/plain.scss, theme/visual.scss, theme/research.scss, theme/figures.scss, theme/course.scss]
     css: [assets/fonts/tg-fonts.css, assets/social/research-fonts.css]
     auto-slide: false
     loop: false
@@ -75,6 +75,27 @@ format:
 
 ```{=html}
 <div class="visual-gallery gallery-pair"><figure><img class="visual-image" src="assets/gallery/al-jawf-image-2018.jpg" alt="2018 Q3"><figcaption>2018 Q3</figcaption></figure><figure><img class="visual-image" src="assets/gallery/al-jawf-image-2025.jpg" alt="2025 Q3"><figcaption>2025 Q3</figcaption></figure></div><p class="visual-caption">Fewer green pivots in the later mosaic; the cause is not established.</p><p class="source-footnote"><a href="https://research.taylorgeospatial.org/global-ftw-2e/">Copernicus Sentinel-2</a></p>
+```
+
+
+## New field blocks {#change-new-fields .tg-light .visual-slide}
+
+```{=html}
+<div class="change-pair"><figure><h3>Matopiba, Brazil</h3><div class="motion-only"><img class="motion-fallback" src="assets/motion/matopiba-change-poster.jpg" alt="2018 and 2025 Q3 imagery showing new rectangular field blocks in Matopiba"><video muted loop playsinline controls preload="metadata" poster="assets/motion/matopiba-change-poster.jpg"><source src="assets/motion/matopiba-change.mp4" type="video/mp4"></video></div><figcaption>2018 → 2025 · Q3</figcaption></figure><figure><h3>Masindi, Uganda</h3><div class="motion-only"><img class="motion-fallback" src="assets/motion/masindi-change-poster.jpg" alt="2018 and 2025 Q1 imagery showing new gridded fields near Masindi"><video muted loop playsinline controls preload="metadata" poster="assets/motion/masindi-change-poster.jpg"><source src="assets/motion/masindi-change.mp4" type="video/mp4"></video></div><figcaption>2018 → 2025 · Q1</figcaption></figure></div><p class="visual-caption">New field patterns in the later imagery.</p><p class="source-footnote"><a href="https://github.com/isaaccorley/cng-mapping-digital-public-goods/blob/f7517e1be8466bc4a4793f29e03b322e95ccaa2f/MEDIA.md">CNG talk captures · Copernicus Sentinel-2 · RGB imagery only</a></p>
+```
+
+
+## New fields across valley floors {#change-valleys .tg-light .visual-slide}
+
+```{=html}
+<div class="change-pair"><figure><h3>Ili Valley, China</h3><div class="motion-only"><img class="motion-fallback" src="assets/motion/ili-change-poster.jpg" alt="2018 and 2025 Q3 imagery showing new field patterns across the Ili Valley floor"><video muted loop playsinline controls preload="metadata" poster="assets/motion/ili-change-poster.jpg"><source src="assets/motion/ili-change.mp4" type="video/mp4"></video></div><figcaption>2018 → 2025 · Q3</figcaption></figure><figure><h3>Kura lowland, Azerbaijan</h3><div class="motion-only"><img class="motion-fallback" src="assets/motion/kura-change-poster.jpg" alt="2018 and 2025 Q3 imagery showing expansion of field patterns in the Kura lowland"><video muted loop playsinline controls preload="metadata" poster="assets/motion/kura-change-poster.jpg"><source src="assets/motion/kura-change.mp4" type="video/mp4"></video></div><figcaption>2018 → 2025 · Q3</figcaption></figure></div><p class="visual-caption">Field patterns cover more ground in the later images; water use and causes are not measured here.</p><p class="source-footnote"><a href="https://github.com/isaaccorley/cng-mapping-digital-public-goods/blob/f7517e1be8466bc4a4793f29e03b322e95ccaa2f/MEDIA.md">CNG talk captures · Copernicus Sentinel-2 · RGB imagery only</a></p>
+```
+
+
+## Changing field layout in West Bahia, Brazil {#change-bahia .tg-light .visual-slide}
+
+```{=html}
+<div class="change-single motion-only"><img class="motion-fallback" src="assets/motion/bahia-layout-change-poster.jpg" alt="2018 and 2025 Q1 imagery showing rectangular fields replaced by center pivots in West Bahia"><video muted loop playsinline controls preload="metadata" poster="assets/motion/bahia-layout-change-poster.jpg"><source src="assets/motion/bahia-layout-change.mp4" type="video/mp4"></video></div><p class="visual-caption">2018 → 2025 · Q1 · Rectangular fields give way to center pivots while the land remains agricultural.</p><p class="source-footnote"><a href="https://github.com/isaaccorley/cng-mapping-digital-public-goods/blob/f7517e1be8466bc4a4793f29e03b322e95ccaa2f/MEDIA.md">CNG talk captures · Copernicus Sentinel-2 · RGB imagery only</a></p>
 ```
 
 
@@ -195,6 +216,30 @@ format:
 
 ```{=html}
 <img class="wide-figure" src="assets/eval/folds-random-vs-regional.png" alt="The same locations split into random folds and into 20-degree regional folds; one held-out fold in coral"><div class="three-notes"><p>Random folds often place test observations next to training observations.</p><p>Regional holdouts test transfer across held-out geographic cells.</p><p>Input resolution and geographic generalization are different properties.</p></div><p class="source-footnote"><a href="https://arxiv.org/html/2609.25454v2">MIND the Gap · held-out fold in coral</a></p>
+```
+
+
+## Location encoders · SatCLIP {#location-encoder-intro .tg-light .visual-slide .paper-figure-slide}
+
+```{=html}
+<img class="paper-figure" src="assets/papers/satclip-fig2.png" alt="SatCLIP Figure 2: satellite images and their coordinates train paired encoders; downstream locations pass through the location encoder and a learner fitted to labels">
+<p class="source-footnote"><a href="https://arxiv.org/html/2311.17179v3#S2.F2">Klemmer et al. · SatCLIP · Figure 2</a></p>
+```
+
+
+## AlphaEarth · annual satellite features {#using-satellite-embeddings .tg-light .visual-slide .paper-figure-slide}
+
+```{=html}
+<img class="paper-figure" src="assets/papers/alphaearth-fig1-b-e.png" alt="AlphaEarth Foundations Figure 1 panels B through E: multisensor observations over time, a global embedding map, local feature bands and a pixel embedding vector">
+<p class="source-footnote"><a href="https://arxiv.org/pdf/2507.22291v2#page=2">Brown et al. · AlphaEarth Foundations · Figure 1 B–E</a></p>
+```
+
+
+## TESSERA · fit a model to published embeddings {#tessera-embeddings .tg-light .visual-slide .paper-figure-slide}
+
+```{=html}
+<img class="paper-figure" src="assets/papers/tessera-fig10.png" alt="TESSERA Figure 10: conventional workflows run satellite imagery through an encoder, while the TESSERA workflow fits only a task-specific head to pre-generated embeddings">
+<p class="source-footnote"><a href="https://arxiv.org/html/2506.20380v2#A4.F10">Feng et al. · TESSERA · Figure 10</a></p>
 ```
 
 

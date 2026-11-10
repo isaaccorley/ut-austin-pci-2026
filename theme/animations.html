@@ -3,6 +3,7 @@
  const setup = () => {
   if (!window.Reveal || !Reveal.isReady()) { setTimeout(setup, 50); return; }
   const isStatic = new URLSearchParams(location.search).has('static');
+  document.documentElement.classList.toggle('static-deck', isStatic);
   const videos = [...document.querySelectorAll('video')];
   const playback = () => {
    videos.forEach(v => v.pause());
